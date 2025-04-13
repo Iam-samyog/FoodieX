@@ -12,7 +12,6 @@ A simple and interactive Django application that allows users to **Create**, **R
 ## Tech Stack
 
 - **Django**: The web framework used for building the app.
-- **SQLite**: The default database for storing recipes.
 - **Bootstrap**: Front-end framework for responsive design.
 - **Python 3**: The programming language used.
 - **HTML/CSS**: For basic layout and styling.
