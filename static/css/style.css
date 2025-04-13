@@ -106,8 +106,32 @@ textarea.form-control {
 
 /* Footer */
 footer {
-    margin-top: 50px;
+    margin-top: 70px;
+    background-color: #fd7e14;
+    color:black;
+    border-top:#333 4px solid;
 }
+footer .links a {
+    color: black;
+    margin: 0 20px;
+    text-decoration: none;
+    font-size: 18px;
+  }
+footer .links a:hover {
+    text-decoration: underline;
+  }
+footer .social-media a {
+    color: black;
+    
+    
+
+    font-size: 28px;
+    text-decoration: none;
+  }
+  footer .social-media {
+    margin:0 20px;
+  }
+
 
 /* Recipe Detail Page */
 .card-header h1 {
