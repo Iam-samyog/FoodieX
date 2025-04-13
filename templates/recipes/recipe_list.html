@@ -29,7 +29,7 @@
     <div class="col-md-12">
         <div class="d-flex flex-wrap">
             {% for category in categories %}
-                <a href="{% url 'recipe_list' %}?category={{ category.id }}" class="badge bg-info text-decoration-none me-2 mb-2 p-2">
+                <a href="{% url 'recipe_list' %}?category={{ category.id }}" class=" badge badges-color  text-decoration-none me-2 mb-2 p-2">
                     {{ category.name }}
                 </a>
             {% endfor %}
