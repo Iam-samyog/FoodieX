@@ -1,4 +1,4 @@
-# Django CRUD Recipe App
+# FoodieX :Django CRUD Recipe App
 
 A simple and interactive Django application that allows users to **Create**, **Read**, **Update**, and **Delete** recipes. This app is designed to help you manage a collection of recipes by providing an easy-to-use interface for performing CRUD operations.
 
