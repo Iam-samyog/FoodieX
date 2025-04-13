@@ -152,7 +152,24 @@ footer .social-media a {
     font-size: 2rem;
     font-weight: 600;
 }
-
+a{
+    text-decoration: none;
+}
+.btn-oranger{
+    border:2px solid  #f44336;
+    color:black;
+    padding:2px 7px;
+    border-radius: 10px;
+    
+}
+.btn-oranger:hover{
+    background-color: #f44336;
+    color:black;
+    border:2px solid black;
+    padding:2px 7px;
+    border-radius: 10px;
+    
+}
 /* Search Form */
 .search-form {
     padding: 15px;
