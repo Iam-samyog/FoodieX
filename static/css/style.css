@@ -38,7 +38,6 @@ body {
     border-top-right-radius: 10px;
 }
 
-/* Recipe Images */
 .recipe-thumbnail {
     height: 200px;
     object-fit: cover;
@@ -50,7 +49,7 @@ body {
     object-fit: cover;
 }
 
-/* Difficulty Badge Colors */
+
 .bg-easy {
     background-color: #4caf50;
 }
