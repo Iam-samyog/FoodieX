@@ -26,15 +26,4 @@ Clone this repository to your local machine using Git:
 ```bash
 git clone https://github.com/your-username/django-recipe-app.git
 
-Step 2: Set Up a Virtual Environment
-Create and activate a virtual environment for managing dependencies:
 
-bash
-Copy
-Edit
-cd django-recipe-app
-python -m venv venv
-# On Windows:
-venv\Scripts\activate
-# On Mac/Linux:
-source venv/bin/activate
