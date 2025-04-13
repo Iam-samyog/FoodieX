@@ -10,6 +10,9 @@ body {
     border: none;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+.bg-orange{
+    background-color: #f46a06!important;
+}
 
 .card:hover {
     transform: translateY(-5px);
