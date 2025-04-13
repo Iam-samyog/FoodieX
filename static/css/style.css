@@ -1,5 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: "Poppins", sans-serif;
     background-color: #f8f9fa;
     color: #333;
     
@@ -8,7 +9,7 @@ body {
 /* Card Styles */
 .card {
     border-radius: 10px;
-    border: none;
+    border: 3px solid black;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -72,13 +73,15 @@ textarea.form-control {
 }
 
 .btn-primary {
-    background-color: #0d6efd;
-    border-color: #0d6efd;
+    background-color: #fd7e14;
+    border-color: black;
+    color:black;
 }
 
 .btn-primary:hover {
-    background-color: #0b5ed7;
-    border-color: #0a58ca;
+    background-color: #fd7d14b8;
+    border-color: black;
+    color:black;
 }
 
 /* Navigation */
@@ -116,7 +119,9 @@ footer {
 .search-form {
     padding: 15px;
     background-color: #fff;
-    border-radius: 10px;
+    border-radius: 50px;
+    width: 50px;
+    max-width: 100px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
     margin-bottom: 20px;
 }

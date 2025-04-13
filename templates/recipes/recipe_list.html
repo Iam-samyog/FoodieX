@@ -4,20 +4,23 @@
 {% block title %}Recipes{% endblock %}
 
 {% block content %}
+
 <div class="row mb-4">
-    <div class="col-md-8">
-        <h1>All Recipes</h1>
-    </div>
-    <div class="col-md-4">
-        <form method="get" class="d-flex">
-            <div class="input-group">
+    <div class="col-md-12 text-center  align-items-center">
+        <h1 class="me-auto">Recipes</h1>
+
+        <form method="get" class="d-flex align-items-center w-80 ">
+            <div class="input-group me-2 d-flex align-items-center w-20">
                 {{ search_form.query.label_tag }}
                 {{ search_form.query }}
-                {{ search_form.category }}
-                <button type="submit" class="btn btn-primary">
-                    <i class="fas fa-search"></i> Search
-                </button>
+              
             </div>
+            <div class="input-group mt-4 me-2 d-flex align-items-center w-50">
+                {{ search_form.category }}
+            </div>
+            <button type="submit" class="btn mt-4 btn-primary d-flex gap-2 align-items-center w-10">
+                <i class="fas fa-search"></i> Search
+            </button>
         </form>
     </div>
 </div>
@@ -33,6 +36,8 @@
         </div>
     </div>
 </div>
+
+
 
 {% if recipes %}
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
