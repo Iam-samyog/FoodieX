@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}Recipe Categories{% endblock %}
+
+{% block content %}
+<h1>Recipe Categories</h1>
+
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mt-3">
+    {% for category in categories %}
+        <div class="col">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">{{ category.name }}</h5>
+                    <p class="card-text">{{ category.description|default:"No description available" }}</p>
+                    <p class="card-text"><small class="text-muted">{{ category.recipes.count }} recipes</small></p>
+                </div>
+                <div class="card-footer bg-white">
+                    <a href="{% url 'recipe_list' %}?category={{ category.id }}" class="btn btn-sm btn-outline-primary">View Recipes</a>
+                </div>
+            </div>
+        </div>
+    {% empty %}
+        <div class="col-12">
+            <div class="alert alert-info">
+                <p>No categories found. Categories will be added as recipes are created.</p>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

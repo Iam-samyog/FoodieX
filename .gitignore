@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Django
+*.log
+*.pot
+*.pyc
+__pycache__/
+db.sqlite3
+media/
+staticfiles/
+
+# Virtualenv
+venv/
+.venv/
+
+# IDEs and Editors
+.idea/
+.vscode/
+.pytest_cache/
+*.swp
+
+# .env file for sensitive data
+.env

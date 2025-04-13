@@ -1,0 +1,153 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {% if form.instance.pk %}Edit Recipe{% else %}Add Recipe{% endif %}
+{% endblock %}
+
+{% block content %}
+<div class="card shadow">
+    <div class="card-header bg-light">
+        <h1>{% if form.instance.pk %}Edit Recipe{% else %}Add New Recipe{% endif %}</h1>
+    </div>
+    <div class="card-body">
+        <form method="post" enctype="multipart/form-data" novalidate>
+            {% csrf_token %}
+            
+            {% if form.non_field_errors %}
+                <div class="alert alert-danger">
+                    {% for error in form.non_field_errors %}
+                        {{ error }}
+                    {% endfor %}
+                </div>
+            {% endif %}
+            
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="{{ form.title.id_for_label }}" class="form-label">{{ form.title.label }}</label>
+                    {{ form.title }}
+                    {% if form.title.errors %}
+                        <div class="text-danger">
+                            {% for error in form.title.errors %}
+                                {{ error }}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+                
+                <div class="col-md-6 mb-3">
+                    <label for="{{ form.category.id_for_label }}" class="form-label">{{ form.category.label }}</label>
+                    {{ form.category }}
+                    {% if form.category.errors %}
+                        <div class="text-danger">
+                            {% for error in form.category.errors %}
+                                {{ error }}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            
+            <div class="mb-3">
+                <label for="{{ form.description.id_for_label }}" class="form-label">{{ form.description.label }}</label>
+                {{ form.description }}
+                {% if form.description.errors %}
+                    <div class="text-danger">
+                        {% for error in form.description.errors %}
+                            {{ error }}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <label for="{{ form.cooking_time.id_for_label }}" class="form-label">{{ form.cooking_time.label }}</label>
+                    {{ form.cooking_time }}
+                    {% if form.cooking_time.errors %}
+                        <div class="text-danger">
+                            {% for error in form.cooking_time.errors %}
+                                {{ error }}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+                
+                <div class="col-md-4 mb-3">
+                    <label for="{{ form.servings.id_for_label }}" class="form-label">{{ form.servings.label }}</label>
+                    {{ form.servings }}
+                    {% if form.servings.errors %}
+                        <div class="text-danger">
+                            {% for error in form.servings.errors %}
+                                {{ error }}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+                
+                <div class="col-md-4 mb-3">
+                    <label for="{{ form.difficulty.id_for_label }}" class="form-label">{{ form.difficulty.label }}</label>
+                    {{ form.difficulty }}
+                    {% if form.difficulty.errors %}
+                        <div class="text-danger">
+                            {% for error in form.difficulty.errors %}
+                                {{ error }}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            
+            <div class="mb-3">
+                <label for="{{ form.ingredients.id_for_label }}" class="form-label">{{ form.ingredients.label }}</label>
+                {{ form.ingredients }}
+                <small class="form-text text-muted">Enter each ingredient on a separate line</small>
+                {% if form.ingredients.errors %}
+                    <div class="text-danger">
+                        {% for error in form.ingredients.errors %}
+                            {{ error }}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            
+            <div class="mb-3">
+                <label for="{{ form.instructions.id_for_label }}" class="form-label">{{ form.instructions.label }}</label>
+                {{ form.instructions }}
+                <small class="form-text text-muted">Enter each step on a separate line</small>
+                {% if form.instructions.errors %}
+                    <div class="text-danger">
+                        {% for error in form.instructions.errors %}
+                            {{ error }}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            
+            <div class="mb-3">
+                <label for="{{ form.image.id_for_label }}" class="form-label">{{ form.image.label }}</label>
+                {% if form.instance.image %}
+                    <div class="mb-2">
+                        <img src="{{ form.instance.image.url }}" alt="{{ form.instance.title }}" class="img-thumbnail" style="max-height: 150px;">
+                    </div>
+                {% endif %}
+                {{ form.image }}
+                <small class="form-text text-muted">Upload an image of your recipe (optional)</small>
+                {% if form.image.errors %}
+                    <div class="text-danger">
+                        {% for error in form.image.errors %}
+                            {{ error }}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            
+            <div class="d-flex justify-content-between">
+                <a href="{% url 'recipe_list' %}" class="btn btn-outline-secondary">Cancel</a>
+                <button type="submit" class="btn btn-primary">
+                    {% if form.instance.pk %}Save Changes{% else %}Add Recipe{% endif %}
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

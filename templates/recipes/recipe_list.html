@@ -1,0 +1,129 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Recipes{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-md-8">
+        <h1>All Recipes</h1>
+    </div>
+    <div class="col-md-4">
+        <form method="get" class="d-flex">
+            <div class="input-group">
+                {{ search_form.query.label_tag }}
+                {{ search_form.query }}
+                {{ search_form.category }}
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-search"></i> Search
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="row mb-4">
+    <div class="col-md-12">
+        <div class="d-flex flex-wrap">
+            {% for category in categories %}
+                <a href="{% url 'recipe_list' %}?category={{ category.id }}" class="badge bg-info text-decoration-none me-2 mb-2 p-2">
+                    {{ category.name }}
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% if recipes %}
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        {% for recipe in recipes %}
+            <div class="col">
+                <div class="card h-100 shadow-sm">
+                    {% if recipe.image %}
+                        <img src="{{ recipe.image.url }}" class="card-img-top recipe-thumbnail" alt="{{ recipe.title }}">
+                    {% else %}
+                        <div class="card-img-top recipe-thumbnail bg-light d-flex align-items-center justify-content-center">
+                            <i class="fas fa-utensils fa-3x text-secondary"></i>
+                        </div>
+                    {% endif %}
+                    <div class="card-body">
+                        <h5 class="card-title">{{ recipe.title }}</h5>
+                        <div class="d-flex mb-2">
+                            <span class="badge bg-primary me-2">{{ recipe.category }}</span>
+                            <span class="badge bg-{{ recipe.difficulty|lower }}">{{ recipe.difficulty }}</span>
+                        </div>
+                        <p class="card-text">{{ recipe.description|truncatewords:25 }}</p>
+                    </div>
+                    <div class="card-footer bg-white d-flex justify-content-between align-items-center">
+                        <small class="text-muted">
+                            <i class="far fa-clock me-1"></i>{{ recipe.cooking_time }} mins
+                            <i class="fas fa-user ms-2 me-1"></i>{{ recipe.author }}
+                        </small>
+                        <a href="{% url 'recipe_detail' recipe.pk %}" class="btn btn-sm btn-outline-primary">View Recipe</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    {% if is_paginated %}
+    <div class="pagination justify-content-center mt-4">
+        <ul class="pagination">
+            {% if page_obj.has_previous %}
+                <li class="page-item">
+                    <a class="page-link" href="?page=1">&laquo; First</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+                </li>
+            {% else %}
+                <li class="page-item disabled">
+                    <span class="page-link">&laquo; First</span>
+                </li>
+                <li class="page-item disabled">
+                    <span class="page-link">Previous</span>
+                </li>
+            {% endif %}
+
+            {% for num in page_obj.paginator.page_range %}
+                {% if page_obj.number == num %}
+                    <li class="page-item active">
+                        <span class="page-link">{{ num }}</span>
+                    </li>
+                {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+                    </li>
+                {% endif %}
+            {% endfor %}
+
+            {% if page_obj.has_next %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">Last &raquo;</a>
+                </li>
+            {% else %}
+                <li class="page-item disabled">
+                    <span class="page-link">Next</span>
+                </li>
+                <li class="page-item disabled">
+                    <span class="page-link">Last &raquo;</span>
+                </li>
+            {% endif %}
+        </ul>
+    </div>
+    {% endif %}
+
+{% else %}
+    <div class="alert alert-info">
+        <h4 class="alert-heading">No recipes found!</h4>
+        <p>There are no recipes matching your search criteria.</p>
+        {% if user.is_authenticated %}
+            <hr>
+            <p class="mb-0">Why not <a href="{% url 'recipe_create' %}" class="alert-link">add a new recipe</a>?</p>
+        {% endif %}
+    </div>
+{% endif %}
+{% endblock %}
